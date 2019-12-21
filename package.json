@@ -1,0 +1,16 @@
+{
+  "name": "nankatsu-bot",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "author": "kangaechu",
+  "license": "MIT",
+  "dependencies": {
+    "@slack/bolt": "^1.5.0",
+    "aws-serverless-express": "^3.3.6"
+  },
+  "devDependencies": {
+    "serverless": "^1.60.1",
+    "serverless-offline": "^5.12.1"
+  }
+}
