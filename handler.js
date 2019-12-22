@@ -16,9 +16,9 @@ const app = new App({
 // Application Logic
 // ------------------------
 
-app.command('/echo', async ({ command, ack, say }) => {
-  ack();
-  say(`${command.text}`);
+app.message('ping', async ({ message, say }) => {
+  // say() sends a message to the channel where the event was triggered
+  say(`pong`)
 });
 
 // ------------------------
