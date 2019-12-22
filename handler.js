@@ -55,6 +55,20 @@ app.event('team_join', async ({ event, context }) => {
   }
 });
 
+app.event('channel_created', async ({ event, context }) => {
+  try {
+    const result = await app.client.chat.postMessage({
+      token: context.botToken,
+      channel: '#random',
+      text: `#${event.channel.name} チャンネルが作られたよ!🎉`,
+      link_names: true
+    });
+    console.log(result);
+  }
+  catch (error) {
+    console.error(error);
+  }
+});
 // ------------------------
 // AWS Lambda handler
 // ------------------------
