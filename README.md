@@ -1,14 +1,10 @@
-# serverless-slack-bolt-aws⚡️
+# nankatsu-bot
 
-If you'd like to start using [Slack's Bolt⚡️](https://slack.dev/bolt/) with a minimum settings, this [Serverless](https://serverless.com/) template is perfect for you!
+nankatsu-bot is a Slack bot powered by [Slack's Bolt⚡️](https://slack.dev/bolt/).
+
+## Installation
 
 ```bash
-# node 10.13+ required
-# 0) Create a new project with this template
-npm i -g serverless
-serverless create \
-  --template-url https://github.com/seratch/serverless-slack-bolt-aws/tree/master \
-  --path hello-bolt
 
 # 1) Slack App Configuration
 # Go to https://api.slack.com/apps
