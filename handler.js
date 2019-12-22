@@ -21,6 +21,40 @@ app.message('ping', async ({ message, say }) => {
   say(`pong`)
 });
 
+app.event('team_join', async ({ event, context }) => {
+  try {
+    //send welcome message
+    const welcomeMessage = await app.client.chat.postMessage({
+      token: context.botToken,
+      channel: '#new-member',
+      text: `ようこそ <@${event.user.id}>! 🎉 自己紹介をしてみましょう！`
+    });
+    console.log(welcomeMessage);
+
+    // get channel name of this month (yyyy-mm)
+    const today = new Date();
+    const thisYM = today.getFullYear() + '- ' + ("0" + (today.getMonth() + 1)).slice(-2);
+    // send links
+    const linkMessage = await app.client.chat.postMessage({
+      token: context.botToken,
+      channel: '#new-member',
+      thread_ts: welcomeMessage.ts,
+      link_names: true,
+      text: "これらのチャンネルに参加してみるといいよ！"
+        + "- #technical: 技術的な話\n"
+        + "- #news : IT関連のニュース\n"
+        + "- #random : なんでも\n"
+        + `- #${thisYM} : 今月のMeetUp\n`
+        + "- times_username : 分報\n"
+        + "自分のチャンネルも作ってみよう！"
+    });
+    console.log(linkMessage);
+  }
+  catch (error) {
+    console.error(error);
+  }
+});
+
 // ------------------------
 // AWS Lambda handler
 // ------------------------
