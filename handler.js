@@ -22,11 +22,12 @@ app.message('ping', async ({ message, say }) => {
 });
 
 app.event('team_join', async ({ event, context }) => {
+  const teamJoinNotifyChannel = process.env.TEAM_JOIN_NOTIFY_CHANNEL || '#general';
   try {
     //send welcome message
     const welcomeMessage = await app.client.chat.postMessage({
       token: context.botToken,
-      channel: '#new-member',
+      channel: teamJoinNotifyChannel,
       text: `ようこそ <@${event.user.id}>! 🎉 自己紹介をしてみましょう！`
     });
     console.log(welcomeMessage);
@@ -37,7 +38,7 @@ app.event('team_join', async ({ event, context }) => {
     // send links
     const linkMessage = await app.client.chat.postMessage({
       token: context.botToken,
-      channel: '#new-member',
+      channel: teamJoinNotifyChannel,
       thread_ts: welcomeMessage.ts,
       link_names: true,
       text: "これらのチャンネルに参加してみるといいよ！"
@@ -56,10 +57,11 @@ app.event('team_join', async ({ event, context }) => {
 });
 
 app.event('channel_created', async ({ event, context }) => {
+  const channelCreatedNotifyChannel = process.env.CHANNEL_CREATED_NOTIFY_CHANNEL || '#general';
   try {
     const result = await app.client.chat.postMessage({
       token: context.botToken,
-      channel: '#random',
+      channel: channelCreatedNotifyChannel,
       text: `#${event.channel.name} チャンネルが作られたよ!🎉`,
       link_names: true
     });
