@@ -10,7 +10,7 @@
     "aws-serverless-express": "^3.3.6"
   },
   "devDependencies": {
-    "serverless": "^1.60.1",
+    "serverless": "^2.0.0",
     "serverless-offline": "^6.0.0"
   }
 }
